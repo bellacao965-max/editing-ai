@@ -1,0 +1,149 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  
+  --color-sidebar: hsl(var(--sidebar));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  --font-sans: 'Inter', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
+}
+
+/* Dark Mode by Default for Studio App */
+:root {
+  /* Deep Charcoal Background */
+  --background: 225 15% 6%;
+  --foreground: 210 40% 98%;
+
+  /* Slightly lighter card panels */
+  --card: 225 15% 9%;
+  --card-foreground: 210 40% 98%;
+
+  --popover: 225 15% 9%;
+  --popover-foreground: 210 40% 98%;
+
+  /* Electric Violet/Blue for Primary (AI Brand Color) */
+  --primary: 255 90% 65%;
+  --primary-foreground: 210 40% 98%;
+
+  /* Secondary/Subtle actions */
+  --secondary: 217 20% 15%;
+  --secondary-foreground: 210 40% 98%;
+
+  --muted: 217 20% 15%;
+  --muted-foreground: 215 20% 65%;
+
+  /* Cyan Accent for tools */
+  --accent: 180 80% 40%;
+  --accent-foreground: 210 40% 98%;
+
+  --destructive: 0 62% 30%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 217 20% 15%;
+  --input: 217 20% 15%;
+  --ring: 255 90% 65%;
+
+  --radius: 0.75rem;
+
+  /* Sidebar */
+  --sidebar: 225 15% 7%;
+  --sidebar-foreground: 210 40% 98%;
+  --sidebar-primary: 255 90% 65%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 217 20% 15%;
+  --sidebar-accent-foreground: 210 40% 98%;
+  --sidebar-border: 217 20% 15%;
+  --sidebar-ring: 255 90% 65%;
+}
+
+body {
+  @apply bg-background text-foreground font-sans antialiased;
+  background-image: radial-gradient(circle at 50% 0%, hsla(255, 90%, 65%, 0.05), transparent 40%);
+}
+
+/* Custom Scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+.glass-panel {
+  background: rgba(20, 22, 28, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid hsla(217, 20%, 25%, 0.5);
+}
+
+.ai-gradient-text {
+  background: linear-gradient(135deg, #a78bfa 0%, #2dd4bf 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ai-gradient-border {
+  position: relative;
+}
+.ai-gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #a78bfa, #2dd4bf);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}

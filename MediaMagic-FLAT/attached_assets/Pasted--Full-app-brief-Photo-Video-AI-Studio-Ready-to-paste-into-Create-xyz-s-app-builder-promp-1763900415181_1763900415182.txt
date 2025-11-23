@@ -1,0 +1,231 @@
+# Full app brief — **Photo & Video AI Studio**
+
+*(Ready to paste into Create.xyz’s app-builder prompt — written in English as requested.)*
+
+---
+
+## 1) App name & elevator pitch
+
+**App name:** Photo & Video AI Studio
+**Elevator pitch:** A powerful, user-friendly mobile and web app for creators that combines pro-grade photo and video editing tools with advanced AI features and a conversational AI assistant. Users can perform one-tap enhancements, complex edits (background removal, style transfer, color-grading), automated video editing (smart cuts, captions, sound design), and get step-by-step help from an English-speaking AI assistant.
+
+---
+
+## 2) Target platforms & audience
+
+* **Platforms:** Web app + Progressive Web App (mobile-friendly) + option to export Flutter project for native Android/iOS.
+* **Primary users:** Social media creators, small studios, freelance photographers/videographers, marketers, and hobbyists.
+* **Skill levels:** Beginner → Advanced (UI adapts: Quick Mode vs. Pro Mode).
+
+---
+
+## 3) Main goals & success metrics
+
+* **Goals:** Fast AI-assisted edits; high-quality exports; increase user retention via templates & assistant; convert free users to paid pro for high-resolution exports and premium AI credits.
+* **Key metrics:** Daily active users, edits per user, export completion rate, paid conversions, average session length, retention after 7/30 days.
+
+---
+
+## 4) Core features (detailed)
+
+### A. Unified Workspace
+
+* Project-based workspace: one project may contain multiple images and video clips.
+* Non-destructive editing with version history and undo/redo.
+* Auto-save to cloud project storage.
+
+### B. Photo Editor (essential tools)
+
+* Crop, rotate, flip, straighten.
+* Exposure / contrast / highlights / shadows / saturation / vibrance.
+* White balance and temperature.
+* Tone curves and HSL controls.
+* Sharpening, denoise, blur (Gaussian, radial).
+* Healing brush, clone stamp.
+* Layers & blending modes (normal, multiply, screen, overlay).
+* Gradients & vignette.
+* Presets / LUTs / One-tap enhance.
+* Batch edit & batch export.
+
+### C. Video Editor (essential tools)
+
+* Timeline with drag-and-drop clips.
+* Trim, split, ripple delete.
+* Multi-track audio mixing.
+* Transitions library (cut, fade, slide, wipe).
+* Speed ramping, reverse playback.
+* Color grading panel (LUT import/export).
+* Stabilization (AI-powered).
+* Picture-in-picture and overlays.
+* Export presets (social sizes, bitrate options).
+
+### D. Advanced AI Editing (flagship)
+
+* **Background removal**: single-click foreground mask for photos & masked region in video frames (frame-aware).
+* **Generative fill & object removal**: replace removed objects with context-aware content.
+* **Style transfer**: apply painterly, cinematic, or custom style to images or video sequences (per-frame stylization with temporal smoothing).
+* **Auto color-grading / LUT suggestions**: AI recommends LUTs based on mood keyword (e.g., “moody teal-orange”).
+* **Smart cropping & composition suggestions**: AI suggests crops for Instagram, TikTok, YouTube thumbnails.
+* **Semantic selection**: select sky, hair, clothing, background, etc.
+* **Facial retouching**: skin smoothing, blemish removal, teeth whiten, eye enhancement (preserve identity).
+* **Auto enhance**: single-tap quality boost for photos or video clips.
+
+### E. Automated Video Tools
+
+* **Auto cut & assemble**: upload raw clips and a target duration; AI creates a paced edit with transitions and music.
+* **Auto captions & subtitles**: speech-to-text with edit UI, multi-language support.
+* **Auto highlight reel**: detect best moments using motion / face / audio peaks.
+* **Music & SFX suggestion**: AI chooses royalty-free tracks matching mood and pace.
+* **Auto color match**: match color across multiple clips.
+
+### F. AI Assistant (conversational, English)
+
+* **Role:** editable assistant name (e.g., “Studio Assistant”).
+* **Capabilities:** explain steps, generate edits based on natural-language instructions, create presets, suggest templates, write social captions, produce export settings for platforms.
+* **Examples of what users can ask (assistant):**
+
+  * “Remove the background from this portrait and apply a soft golden hour look.”
+  * “Create a 30-second Instagram Reel with fast cuts and upbeat music from these clips.”
+  * “Make this photo look like a film still from the 1970s — color grade and add grain.”
+* **Interactive actions:** assistant can run edit operations directly (with user permission), propose changes, and preview before apply.
+
+### G. Templates & Marketplace
+
+* Built-in templates for reels, thumbnails, promo videos, story templates.
+* Allow users to import/export templates (.json or project file).
+* Community template marketplace (optional monetization).
+
+### H. Export & Sharing
+
+* Export resolutions from social sizes up to 4K (Pro feature).
+* Export formats: JPG, PNG, HEIC, MP4, MOV, GIF, WebP.
+* Export presets: Instagram Stories, TikTok, YouTube 1080p/4K, Twitter, LinkedIn.
+* Direct share integrations: Instagram (share link), TikTok uploader, YouTube (via OAuth), Google Drive, Dropbox.
+
+### I. Collaboration & Assets
+
+* Shared project links with view/edit permissions.
+* Asset library: fonts, stickers, overlays, stock images & clips (free & premium).
+* User-uploaded fonts and brand kit (colors, logos).
+
+### J. Onboarding & Tutorials
+
+* Interactive onboarding (choose Quick Mode or Pro Mode).
+* Guided tour with sample project.
+* AI tutorial: ask assistant “teach me how to color grade”.
+
+---
+
+## 5) Screens & navigation (high-level)
+
+1. **Welcome / Sign-in** (email, Google, Apple)
+2. **Home / Projects**: recent projects, templates, create new project
+3. **Upload / Import**: files, camera, cloud
+4. **Editor Workspace**: left toolbar (tools), canvas/timeline center, right properties panel, top AI assistant chat button
+5. **Assistant Modal/Panel**: chat + suggested actions (Apply, Preview, Undo)
+6. **Export dialog**: presets, advanced settings, watermark toggle
+7. **Settings**: account, subscription, AI credits, storage
+8. **Admin Dashboard** (web-only): user metrics, template moderation, billing
+
+---
+
+## 6) Data & backend model (basic)
+
+* **User:** id, name, email, plan, preferences, brand kit
+* **Project:** id, owner, assets[], edits[], versions[]
+* **Assets:** file metadata, thumbnails, storage path, usage
+* **Templates:** metadata, preview, author, price/free
+* **AI jobs:** job id, status, input refs, output refs, cost (credits)
+
+**Storage:** S3-compatible (cloud storage) for assets + CDN for delivery.
+**DB:** PostgreSQL for metadata + Redis for job queue.
+
+---
+
+## 7) AI & integrations
+
+* **AI services (suggested):**
+
+  * Image generation/processing: Stable Diffusion / custom vision models / provider APIs
+  * Background removal / matting: dedicated API (or open-source models like MODNet)
+  * Speech-to-text: Whisper or cloud STT for captions
+  * Text-to-speech: cloud TTS for voice-over suggestions
+  * Video processing: FFmpeg + frame-level AI models
+* **Third-party services:** OAuth (Google, Apple), cloud storage (S3), payments (Stripe), analytics (Mixpanel or Segment), error tracking (Sentry).
+
+---
+
+## 8) Monetization & plans
+
+* **Free tier:** basic editor tools, low-res exports, watermarked exports, limited AI credits, access to free templates.
+* **Pro tier (subscription):** high-res exports, unlimited projects, premium templates, batch processing, priority AI processing.
+* **Credits & microtransactions:** buy AI credits for heavy AI jobs (style transfer, generative fill, long video rendering).
+* **Marketplace revenue share** for premium templates/assets.
+
+---
+
+## 9) Permissions & privacy
+
+* Request minimal permissions (camera, storage) only when necessary.
+* Clear consent for uploading user content to AI/third-party services.
+* Privacy: user retains ownership of their content; option to delete account & assets.
+* GDPR & CCPA compliance considerations.
+
+---
+
+## 10) Accessibility & localization
+
+* Accessibility: keyboard navigation, screen reader support, large text UI mode, color contrast.
+* Localization: UI support for major languages; assistant initially English (with future multi-language support).
+
+---
+
+## 11) Admin features & moderation
+
+* Template moderation queue.
+* Abuse detection for generated content (nudity, hateful symbols).
+* Admin controls for disabling accounts, viewing logs (with privacy safeguards).
+
+---
+
+## 12) Sample Create.xyz prompt (paste this into Create.xyz to generate the app)
+
+> Create a cross-platform web + PWA app called **"Photo & Video AI Studio"** — a modern, responsive, project-based editor for both photos and videos. Provide a clean, professional UI with two primary modes: Quick Mode (one-tap AI edits) and Pro Mode (full manual controls). Key modules: photo editor (layers, curves, HSL, healing), video editor (timeline, trimming, transitions, multi-track audio), advanced AI features (background removal, generative fill/object removal, style transfer, auto color-grading), automated video editing (auto-cut, auto-captions, highlight reels), an English-only conversational AI assistant that can perform edits via natural-language commands and show previews, templates marketplace, project cloud storage, exports up to 4K, user accounts with subscription (free/pro). Include project versioning, collaborative project sharing, asset library, onboarding tour, and analytics. Provide admin dashboard for templates, users, and revenue. Include sample UI screens: Home/Projects, Upload, Editor (canvas + timeline), Assistant chat panel, Export modal, Settings. Use optimistic autosave and non-destructive editing. Integrate with OAuth (Google/Apple), Stripe for payments, and S3-compatible storage. Provide placeholders for AI API keys and optional premium stock asset packs. Add permissions, privacy, and GDPR compliance settings.
+
+---
+
+## 13) Example AI assistant prompts & expected behavior (for training the assistant)
+
+* User: “Remove the background from this portrait and add a soft cinematic teal-orange grade.”
+  Assistant: *Applies semantic selection → removes background → applies teal-orange LUT preview → shows before/after slider → asks to accept or tweak intensity.*
+
+* User: “Make a 20-second TikTok using these 5 clips, fast-paced with upbeat pop music.”
+  Assistant: *Runs auto-cut, times to 20s, selects high-energy moments, applies transitions and matched music, generates captions, previews final clip.*
+
+* User: “Replace the sky in this photo with a dramatic sunset and blur the background.”
+  Assistant: *Detects sky region, replaces with generated sunset (user can choose from 3 variants), adds depth-of-field blur to background layer.*
+
+---
+
+## 14) UX copy examples (onboarding & assistant)
+
+* Onboarding headline: “Create stunning photo & video content — fast.”
+* Assistant greeting: “Hi — I’m Studio, your AI editing assistant. Tell me what you want to do (e.g., ‘make this image look cinematic’).”
+
+---
+
+## 15) Minimal viable product (MVP) scope & roadmap
+
+**MVP (Phase 1)** — Core: photo editor, background removal, auto-enhance, assistant chat (text commands), export presets, sign-up, cloud storage (small capacity).
+**Phase 2** — Video timeline, auto-cut, captions, music, templates.
+**Phase 3** — Advanced generative features, marketplace, team collaboration, pro billing.
+
+---
+
+Jika mau, aku bisa:
+
+1. **Generate shorter prompt** optimized for Create.xyz’s input field (one-paragraph).
+2. **Buat flow UI (screen-by-screen)** or **example user stories** for developers.
+3. **Export ready-to-copy text** for feature checklist, or **translate to Indonesian**.
+
+Mau aku **buatkan versi singkat satu-paragraph** langsung yang bisa kamu paste ke Create.xyz sekarang?
